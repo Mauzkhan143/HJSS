@@ -17,6 +17,7 @@ public class MainController {
         System.out.println("4. Monthly learner report");
         System.out.println("5. Monthly coach report");
         System.out.println("6. Register a new learner");
+        System.out.println("7. Do you want to Exit.");
         System.out.print("Enter your choice (1/2/3/4/5/6): ");
         int choice = scanner.nextInt();
         scanner.nextLine(); // Consume newline character
@@ -39,6 +40,9 @@ public class MainController {
                 break;
             case 6:
             	StudentController.insertStudentData();
+                break;
+                case 7:
+            	System.out.println("Program exit successful.");
                 break;
             default:
                 System.out.println("Invalid choice.");

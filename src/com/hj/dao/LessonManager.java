@@ -12,7 +12,7 @@ public class LessonManager {
 	public static Map<String, String> bookedLessons = new HashMap<>();
 
 	public static void createLesson(String lessonName) {
-		if (lessonList.size() < 4) {
+		if (lessonList.size() < 5) {
 			lessonList.add(lessonName);
 			System.out.println("Lesson '" + lessonName + "' added successfully.");
 		} else {
@@ -21,7 +21,10 @@ public class LessonManager {
 	}
 
 	public static void createVacancies() {
-		vacancies.put("4-5pm", 1);
+		
+            vacancies.put("2-3pm", 1);
+            vacancies.put("3-4pm", 1);
+            vacancies.put("4-5pm", 1);
 		vacancies.put("5-6pm", 2);
 		vacancies.put("6-7pm", 3);
 	}
@@ -34,10 +37,11 @@ public class LessonManager {
     }
 
     public static void populateLessons() {
-    	createLesson("Lesson 1");
+                createLesson("Lesson 1");
 		createLesson("Lesson 2");
 		createLesson("Lesson 3");
 		createLesson("Lesson 4");
+                createLesson("Lesson 5");
     }
     
 	public static void main(String[] args) {

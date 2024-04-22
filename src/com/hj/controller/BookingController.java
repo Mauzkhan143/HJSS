@@ -1,5 +1,6 @@
 package com.hj.controller;
 
+import static com.hj.controller.MainController.hjssHome;
 import java.util.Scanner;
 
 import com.hj.dao.LessonManager;
@@ -105,6 +106,7 @@ public class BookingController {
                 System.out.println("Change successful.");
             } else {
                 System.out.println("Change unsuccessful. Lesson is full or invalid.");
+                hjssHome();
             }
         } else {
             System.out.println("Booking ID not found.");
