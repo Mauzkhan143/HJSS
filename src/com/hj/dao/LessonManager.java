@@ -22,11 +22,11 @@ public class LessonManager {
 
 	public static void createVacancies() {
 		
-            vacancies.put("2-3pm", 1);
-            vacancies.put("3-4pm", 1);
-            vacancies.put("4-5pm", 1);
-		vacancies.put("5-6pm", 2);
-		vacancies.put("6-7pm", 3);
+            vacancies.put("2-3pm", 0);
+            vacancies.put("3-4pm", 0);
+            vacancies.put("4-5pm", 0);
+		vacancies.put("5-6pm", 0);
+		vacancies.put("6-7pm", 0);
 	}
 	
     public static void updateBookingStatus(String bookingID, String status) {

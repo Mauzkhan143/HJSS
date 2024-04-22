@@ -1,5 +1,6 @@
 package com.hj.controller;
 
+import static com.hj.controller.MainController.hjssHome;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -55,6 +56,7 @@ public class ReportController {
 	            System.out.println("Attended: " + attendedCount);
 	            System.out.println();
 	        }
+                hjssHome();
 	    }
 	    
 	    
@@ -83,6 +85,7 @@ public class ReportController {
 	            double averageRating = calculateAverageRating(ratings);
 	            System.out.println(coachName + ": Average Rating = " + averageRating);
 	        }
+               hjssHome();
 	    }
 	    
 	    private static double calculateAverageRating(Integer[] ratings) {

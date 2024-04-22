@@ -1,5 +1,6 @@
 package com.hj.dao;
 
+import static com.hj.controller.MainController.hjssHome;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,8 +13,10 @@ public class StudentManager {
         if (student.getAge() >= 4 && student.getAge() <= 11) {
             studentList.add(student);
             System.out.println("Student '" + student.getName() + "' added successfully.");
+            hjssHome();
         } else {
             System.out.println("Student age must be between 4 and 11.");
+            hjssHome();
         }
     }
 

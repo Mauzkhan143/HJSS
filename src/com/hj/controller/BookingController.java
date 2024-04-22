@@ -49,6 +49,7 @@ public class BookingController {
             bookLesson(lessonToBook);
         } else {
             System.out.println("Booking unsuccessful. Lesson is full or invalid.");
+            hjssHome();
         }
     }
 	
@@ -96,23 +97,32 @@ public class BookingController {
             String newLesson = scanner.nextLine();
 
             // Check if new lesson can be booked
-            if (canBookLesson(newLesson)) {
+            if (IsLessonBooked(newLesson)) {
                 // Release one place from the previously booked lesson
-            	LessonManager.vacancies.put(currentLesson, LessonManager.vacancies.get(currentLesson) + 1);
+            	LessonManager.vacancies.put(newLesson, 0);
                 // Book the new lesson
                 bookLesson(newLesson);
                 // Remove the old booking
                 LessonManager.bookedLessons.remove(bookingID);
                 System.out.println("Change successful.");
+                hjssHome();
             } else {
-                System.out.println("Change unsuccessful. Lesson is full or invalid.");
+                LessonManager.createVacancies();
+                LessonManager.vacancies.put(newLesson, 1);
+                System.out.println("Change successful.");
                 hjssHome();
             }
         } else {
             System.out.println("Booking ID not found.");
         }
     }
-    
+    public static boolean IsLessonBooked(String lesson){
+        if (LessonManager.vacancies.get(lesson) ==0) {
+            return true;
+        }else{
+            return false;
+        }
+    }
     public static void attendSwimmingLesson() {
         Scanner scanner = new Scanner(System.in);
 
@@ -138,17 +148,20 @@ public class BookingController {
             System.out.println("Review: " + review);
             System.out.println("Rating: " + rating);
             System.out.println("Thank you for attending the lesson.");
+            hjssHome();
         } else {
             System.out.println("Booking ID not found.");
+            hjssHome();
         }
     }
 
 
     private static boolean canBookLesson(String lesson) {
         // Check if lesson exists and has vacancies
-        if (LessonManager.lessonList.contains(lesson)) {
-            int vacancies = LessonManager.vacancies.getOrDefault(lesson, 0);
-            return vacancies < 4;
+//        System.out.println("lesson : "+lesson);
+        if (LessonManager.vacancies.containsKey(lesson)) {
+            int vacancies = LessonManager.vacancies.getOrDefault(LessonManager.vacancies.get(lesson), 0);
+            return vacancies<4;
         }
         return false;
     }
@@ -156,8 +169,10 @@ public class BookingController {
     private static void bookLesson(String lesson) {
         // Existing code to book lesson
     	LessonManager.vacancies.put(lesson, LessonManager.vacancies.get(lesson) + 1);
+        LessonManager.bookedLessons.put(lesson, ""+LessonManager.vacancies.get(lesson));
         // Update vacancies and bookedLessons maps
         // Implement according to your system requirements
         System.out.println("Lesson '" + lesson + "' booked successfully.");
+        hjssHome();
     }
 }
